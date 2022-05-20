@@ -8,13 +8,14 @@ AWS.config.update({
 const lambda = new AWS.Lambda();
 
 const params = {
-    FunctionName: 'hello-world-python'
+    FunctionName: 'calculator',
+    Payload: '{"firstNumber" : 10, "secondNumber" : 30}'
 }
 
 lambda.invoke( params, ( err, data ) => {
     if( err ) {
         console.log( err, err.stack );
     } else {
-        console.log( data );
+        console.log( data.Payload );
     }
 });
